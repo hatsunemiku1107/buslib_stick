@@ -16,7 +16,8 @@ for($i = 1;@$str->find('option', $i);$i++){//「選択してください」文�
 	//系統名を格納
 	$keito[$tmp[0]]["KeitoName"] = $tmp[1];
 	//系統Sidを格納
-	$keito[$tmp[0]]["KeitoSid"] = $str->find('option', $i)->value."\n";
+//系統SID(改行を取り除く)
+	$keito[$tmp[0]]["KeitoSid"]  = str_replace(array("\r\n","\r","\n"), '', ($str->find('option', $i)->value."\n"));
 	//次の系統へ(インクリメント)
 }
 //jsonへ変換
